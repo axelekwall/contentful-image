@@ -16,7 +16,8 @@
     "contentful": "^7.14.0",
     "next": "^9.2.2",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.0",
+    "swr": "^0.1.18"
   },
   "devDependencies": {
     "@types/node": "^13.7.6",
