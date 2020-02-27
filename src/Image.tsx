@@ -1,14 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC, ReactHTMLElement, ReactHTML, HTMLAttributes } from 'react';
 import { Asset } from 'contentful';
 import { getUrl } from './urlBuilder';
 import { ImageProps } from './types';
 
-interface Props extends ImageProps {
+interface Props extends ImageProps, HTMLAttributes<HTMLImageElement> {
   asset: Asset;
 }
 
-const Image: FC<Props> = ({ asset, fit, size, ...props }) => {
-  const imgProps = { fit, size };
+const Image: FC<Props> = ({ asset, size, fit, ...props }) => {
+  const imgProps = { size, fit };
   return (
     <picture>
       <source
@@ -26,7 +26,11 @@ const Image: FC<Props> = ({ asset, fit, size, ...props }) => {
       <img
         {...props}
         src={getUrl(asset.fields.file.url, imgProps, 'original')}
-        alt={asset.fields.description}
+        alt={
+          asset.fields.description
+            ? asset.fields.description
+            : asset.fields.title
+        }
       />
     </picture>
   );

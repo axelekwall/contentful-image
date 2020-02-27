@@ -11,14 +11,43 @@ const Content: FC<Props> = ({ posts }) => (
   <main>
     <h1>Image Demo</h1>
     {posts.map(post => (
-      <div key={post.sys.id}>
+      <article key={post.sys.id}>
         <h3>{post.fields.title}</h3>
         <p>{post.fields.body}</p>
         {post.fields.images.map(image => (
-          <Image key={image.sys.id} asset={image} size={{ width: 500 }} />
+          <Image
+            style={{
+              objectFit: 'cover',
+              maxWidth: '90vw',
+            }}
+            key={image.sys.id}
+            asset={image}
+            size={{ width: 500 }}
+          />
         ))}
-      </div>
+      </article>
     ))}
+    <style jsx>{`
+      main {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      h1 {
+        margin: 20px;
+      }
+      article {
+        width: 500px;
+        max-width: 90vw;
+        margin: 30px auto;
+      }
+    `}</style>
+    <style jsx global>{`
+      body {
+        margin: 0;
+      }
+    `}</style>
   </main>
 );
 
