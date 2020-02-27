@@ -5,9 +5,11 @@ export interface ImageSize {
   height?: number;
 }
 
+export type Fit = 'crop' | 'scale';
+
 export interface ImageProps {
   size?: ImageSize;
-  fit?: string;
+  fit?: Fit;
 }
 
 export type FormatName = 'jpg' | 'png' | 'webp' | 'original';

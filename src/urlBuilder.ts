@@ -9,10 +9,14 @@ const addFormat = (url: string, format: string): string => {
   return url;
 };
 
-const addSize = (url: string, size: ImageSize): string => {
+const addSize = (
+  url: string,
+  size: ImageSize,
+  resolution: number = 1
+): string => {
   let sizeString = '';
-  if (size.width) sizeString += `&w=${size.width}`;
-  if (size.height) sizeString += `&h=${size.width}`;
+  if (size.width) sizeString += `&w=${size.width * resolution}`;
+  if (size.height) sizeString += `&h=${size.width * resolution}`;
   return url + sizeString;
 };
 
@@ -25,6 +29,8 @@ const addQueryString = (url: string, queryString: string) =>
       }`
     : `https:${url}`;
 
+const addFit = (url: string, fit: string) => `${url}&fit=${fit}`;
+
 export const getUrl = (
   baseUrl: string,
   props: ImageProps,
@@ -33,9 +39,8 @@ export const getUrl = (
 ) => {
   const { size, fit } = props;
   let queryString = '';
-  if (size) {
-    queryString = addSize(queryString, size);
-  }
+  if (size) queryString = addSize(queryString, size, resolution);
+  if (fit) queryString = addFit(queryString, fit);
   queryString = addFormat(queryString, format);
 
   return addQueryString(baseUrl, queryString);
