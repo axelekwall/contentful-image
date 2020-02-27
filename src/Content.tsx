@@ -17,7 +17,6 @@ const Content: FC<Props> = ({ posts }) => (
         {post.fields.images.map(image => (
           <Image
             style={{
-              objectFit: 'cover',
               maxWidth: '90vw',
               margin: '10px auto',
             }}
@@ -49,6 +48,7 @@ const Content: FC<Props> = ({ posts }) => (
     <style jsx global>{`
       body {
         margin: 0;
+        background: pink;
       }
     `}</style>
   </main>
