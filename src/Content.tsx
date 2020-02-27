@@ -19,6 +19,7 @@ const Content: FC<Props> = ({ posts }) => (
             style={{
               objectFit: 'cover',
               maxWidth: '90vw',
+              margin: '10px auto',
             }}
             key={image.sys.id}
             asset={image}
@@ -41,6 +42,8 @@ const Content: FC<Props> = ({ posts }) => (
         width: 500px;
         max-width: 90vw;
         margin: 30px auto;
+        display: flex;
+        flex-direction: column;
       }
     `}</style>
     <style jsx global>{`
