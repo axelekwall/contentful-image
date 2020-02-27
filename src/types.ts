@@ -10,7 +10,12 @@ export interface ImageProps {
   fit?: string;
 }
 
-export type Format = 'jpg' | 'png' | 'webp' | 'original';
+export type FormatName = 'jpg' | 'png' | 'webp' | 'original';
+
+export interface Format {
+  type: string;
+  name: FormatName;
+}
 
 export interface Post {
   title: string;

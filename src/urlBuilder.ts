@@ -1,4 +1,4 @@
-import { ImageProps, Format, ImageSize } from './types';
+import { ImageProps, ImageSize, FormatName } from './types';
 
 const addFormat = (url: string, format: string): string => {
   if (format === 'jpg') {
@@ -28,7 +28,7 @@ const addQueryString = (url: string, queryString: string) =>
 export const getUrl = (
   baseUrl: string,
   props: ImageProps,
-  format: Format,
+  format: FormatName,
   resolution?: number
 ) => {
   const { size, fit } = props;
