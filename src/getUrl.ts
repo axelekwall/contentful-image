@@ -1,11 +1,11 @@
-import { ImageProps } from "./Image";
+import { ImageProps } from './Image';
 
-export type Format = "jpg" | "png" | "webp" | "original";
+export type Format = 'jpg' | 'png' | 'webp' | 'original';
 
 const addFormat = (url: string, format: string): string => {
-  if (format === "jpg") {
+  if (format === 'jpg') {
     return `${url}?fm=jpg&fl=progressive`;
-  } else if (format !== "original") {
+  } else if (format !== 'original') {
     return `${url}?fm=${format}`;
   }
   return url;
@@ -18,7 +18,7 @@ export const getUrl = (
   resolution?: number
 ) => {
   const { size, fit } = props;
-  let url = "https:" + baseUrl;
+  let url = 'https:' + baseUrl;
   if (size) {
   }
 

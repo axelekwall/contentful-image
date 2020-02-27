@@ -1,9 +1,9 @@
-import React from "react";
-import { NextPage } from "next";
-import Image from "../src/Image";
-import { client } from "../src/contentfulClient";
-import config from "../src/config";
-import { Asset, Entry } from "contentful";
+import React from 'react';
+import { NextPage } from 'next';
+import Image from '../src/Image';
+import { client } from '../src/contentfulClient';
+import config from '../src/config';
+import { Asset, Entry } from 'contentful';
 
 interface Post {
   title: string;
@@ -24,11 +24,7 @@ const Home: NextPage<Props> = ({ posts }: Props) => {
           <h3>{post.fields.title}</h3>
           <p>{post.fields.body}</p>
           {post.fields.images.map(image => (
-            <Image
-              key={image.sys.id}
-              asset={image}
-              size={{ width: 500 }}
-            />
+            <Image key={image.sys.id} asset={image} size={{ width: 500 }} />
           ))}
         </div>
       ))}
@@ -38,7 +34,7 @@ const Home: NextPage<Props> = ({ posts }: Props) => {
 
 Home.getInitialProps = async () => {
   const { items } = await client.getEntries<Post>({
-    content_type: config.contentType
+    content_type: config.contentType,
   });
   return { posts: items };
 };

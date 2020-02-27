@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import { Asset } from "contentful";
-import { getUrl } from "./getUrl";
+import React, { FC } from 'react';
+import { Asset } from 'contentful';
+import { getUrl } from './getUrl';
 
 interface ImageSize {
   width?: number;
@@ -21,11 +21,11 @@ const Image: FC<Props> = ({ asset, children, ...imgProps }) => {
   return (
     <picture>
       <source
-        src={getUrl(asset.fields.file.url, imgProps, "webp")}
+        src={getUrl(asset.fields.file.url, imgProps, 'webp')}
         type="image/webp"
       />
       <img
-        src={getUrl(asset.fields.file.url, imgProps, "original")}
+        src={getUrl(asset.fields.file.url, imgProps, 'original')}
         alt={asset.fields.description}
       />
     </picture>

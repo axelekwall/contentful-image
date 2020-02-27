@@ -1,5 +1,5 @@
-import * as contentful from "contentful";
-import config from "./config";
+import * as contentful from 'contentful';
+import config from './config';
 
 const client = contentful.createClient(config.contentful);
 
