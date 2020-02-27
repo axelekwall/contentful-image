@@ -5,7 +5,7 @@ export interface ImageSize {
   height?: number;
 }
 
-export type Fit = 'crop' | 'scale';
+export type Fit = 'crop' | 'scale' | 'pad' | 'fill';
 
 export interface ImageProps {
   size?: ImageSize;

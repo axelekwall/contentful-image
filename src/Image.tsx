@@ -26,6 +26,7 @@ const Source: FC<SourceProps> = ({ format, asset, imgProps }) => (
   />
 );
 
+// TODO: This is pretty ugly...
 const getAspectRatio = (asset: Asset, size?: ImageSize) => {
   const original =
     asset.fields.file.details.image.width /
@@ -50,15 +51,11 @@ const Image: FC<Props> = ({
     asset,
     size,
   ]);
-  const { loaded, preloaded, onLoaded, preloadedUrl } = useImgLazyLoad(
-    getUrl(
-      asset.fields.file.url,
-      {
-        size: { width: 20 },
-      },
-      'jpg'
-    )
+  const lowResUrl = useMemo(
+    () => getUrl(asset.fields.file.url, { size: { width: 20 } }, 'jpg'),
+    [asset]
   );
+  const { loaded, preloaded, onLoaded } = useImgLazyLoad(lowResUrl);
   return (
     <div
       style={{
@@ -69,7 +66,7 @@ const Image: FC<Props> = ({
         transition: 'filter 200ms',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
-        backgroundImage: preloaded ? `url(${preloadedUrl})` : '',
+        backgroundImage: preloaded ? `url(${lowResUrl})` : '',
         ...style,
       }}
       className={className}
